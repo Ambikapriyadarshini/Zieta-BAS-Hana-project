@@ -1,0 +1,285 @@
+GET http://localhost:4004/odata/v4/document/$metadata
+
+###
+
+
+GET http://localhost:4004/odata/v4/document
+
+###
+GET http://localhost:4004/odata/v4/document/GPHeaders
+
+###
+
+GET http://localhost:4004/odata/v4/document/GPItems
+
+###
+
+
+GET http://localhost:4004/odata/v4/document/GPPartners
+
+###
+
+GET http://localhost:4004/odata/v4/document/GPHeaders
+
+
+###
+GET http://localhost:34051/odata/v4/document/GPHeaders('4000000003')
+
+###
+
+
+
+###
+
+GET http://localhost:34051/odata/v4/document/GPHeaders('4000000005')?$expand=toGPItems&format=json
+
+###
+
+
+POST http://localhost:4004/odata/v4/document/GPHeaders
+Content-Type: application/json
+
+{
+  "RGP_DOC_NUM": "4000000010",
+  "REFERENCE_TYPE": "01",
+  "RGP_NRGP_DATE": "2021-06-27",
+  "DOC_DATE": "2021-06-27",
+  "BILL_TO_PARTY": "122",
+  "BILL_TO_PARTY_NAME": "Lupin Limited",
+  "SHIP_TO_PARTY": "5000",
+  "SHIP_TO_PARTY_NAME": "Zim Laboratories Limited",
+  "ADDRESS": "ameerpet",
+  "STATE_CODE": "01",
+  "GSTIN": "27AAAAP0267H2ZN",
+  "TRANSPORTER_CODE": "1334",
+  "TRANSPORTER_NAME": "Parryware Transports",
+  "TRANSPORTER_NOTE": "Quick Delivery",
+  "NOTE_NRGP": "OUCO",
+  "REMARK": "Volatile",
+  "CONTNR": "200",
+  "APPRX_VALUE": "2000",
+  "WEIGHT": "200",
+  "STORE": "PM10",
+  "PLANNED_RETURN_DATE": "2021-06-27",
+  "VEHICLE_NO": "MH31FU0030",
+  "REQUESTED_BY": "ASIF",
+  "RECEIVED_BY": "James",
+  "DEPARTMENT": "Production",
+  "EWAYBILL_NO": "AB123456",
+  "LR_NO": "fbn123",
+  "LR_DATE": "2021-06-27",
+  "CONTACT_NO": "9975086538",
+  "TRANSPORT_MODE": "Road",
+  "PLACE_OF_SUPPLY": "Whitefield",
+  "toGPItems": [
+    {
+      "ITEM_KEY": "14212",
+      "RGP_DOC_NUM": "4000000010",
+      "REFERENCE_TYPE": "02",
+      "DOC_DATE": "2021-06-27",
+      "ITEM_NO": "10",
+      "MATERIAL_NO": "70001290",
+      "MATERIAL_DESC": "Panasonic",
+      "ITEM_TEXT": "Motor 15KW",
+      "QUANTITY": "5",
+      "PLANT": "7000",
+      "STORE_LOCATION": "SL02",
+      "RATE": 2,
+      "VALUE": 5,
+      "UOM": "pcs",
+      "TAXCODE": "",
+      "CGST": 2,
+      "SGST": 5,
+      "IGST": 7,
+      "CESS": 8
+    },
+    {
+      "ITEM_KEY": "14213",
+      "RGP_DOC_NUM": "4000000012",
+      "REFERENCE_TYPE": "02",
+      "DOC_DATE": "2021-06-27",
+      "ITEM_NO": "10",
+      "MATERIAL_NO": "70001290",
+      "MATERIAL_DESC": "Panasonic",
+      "ITEM_TEXT": "Motor 15KW",
+      "QUANTITY": "5",
+      "PLANT": "7000",
+      "STORE_LOCATION": "SL02",
+      "RATE": 2,
+      "VALUE": 5,
+      "UOM": "pcs",
+      "TAXCODE": "",
+      "CGST": 2,
+      "SGST": 5,
+      "IGST": 7,
+      "CESS": 8
+    }
+  ]
+}
+
+###
+
+PUT http://localhost:4004/odata/v4/document/GPHeaders/4000000010
+Content-Type: application/json
+
+{
+  "RGP_DOC_NUM": "4000000010",
+  "REFERENCE_TYPE": "01",
+  "RGP_NRGP_DATE": "2021-06-27",
+  "DOC_DATE": "2021-06-27",
+  "BILL_TO_PARTY": "122",
+  "BILL_TO_PARTY_NAME": "Lupin Limited",
+  "SHIP_TO_PARTY": "5000",
+  "SHIP_TO_PARTY_NAME": "Zim Laboratories Limited",
+  "ADDRESS": "ameerpet",
+  "STATE_CODE": "01",
+  "GSTIN": "27AAAAP0267H2ZN",
+  "TRANSPORTER_CODE": "1334",
+  "TRANSPORTER_NAME": "Parryware Transports",
+  "TRANSPORTER_NOTE": "Quick Delivery",
+  "NOTE_NRGP": "OUCO",
+  "REMARK": "Volatile",
+  "CONTNR": "200",
+  "APPRX_VALUE": "2000",
+  "WEIGHT": "200",
+  "STORE": "PM10",
+  "PLANNED_RETURN_DATE": "2021-06-27",
+  "VEHICLE_NO": "MH31FU0030",
+  "REQUESTED_BY": "VIKASP",
+  "RECEIVED_BY": "James",
+  "DEPARTMENT": "Production",
+  "EWAYBILL_NO": "AB123456",
+  "LR_NO": "fbn123",
+  "LR_DATE": "2021-06-27",
+  "CONTACT_NO": "9975086538",
+  "TRANSPORT_MODE": "Road",
+  "PLACE_OF_SUPPLY": "Whitefield",
+  "toGPItems": [
+    {
+      "ITEM_KEY": "14214",
+      "RGP_DOC_NUM": "4000000010",
+      "REFERENCE_TYPE": "02",
+      "DOC_DATE": "2021-06-27",
+      "ITEM_NO": "10",
+      "MATERIAL_NO": "70001290",
+      "MATERIAL_DESC": "Panasonic",
+      "ITEM_TEXT": "Motor 15KW",
+      "QUANTITY": "5",
+      "PLANT": "7000",
+      "STORE_LOCATION": "SL02",
+      "RATE": 2,
+      "VALUE": 5,
+      "UOM": "pcs",
+      "TAXCODE": "",
+      "CGST": 2,
+      "SGST": 5,
+      "IGST": 7,
+      "CESS": 8
+    },
+    {
+      "ITEM_KEY": "14215",
+      "RGP_DOC_NUM": "4000000010",
+      "REFERENCE_TYPE": "02",
+      "DOC_DATE": "2021-06-27",
+      "ITEM_NO": "10",
+      "MATERIAL_NO": "70001290",
+      "MATERIAL_DESC": "Panasonic",
+      "ITEM_TEXT": "Motor 15KW",
+      "QUANTITY": "5",
+      "PLANT": "7000",
+      "STORE_LOCATION": "SL02",
+      "RATE": 2,
+      "VALUE": 5,
+      "UOM": "pcs",
+      "TAXCODE": "",
+      "CGST": 2,
+      "SGST": 5,
+      "IGST": 7,
+      "CESS": 8
+    }
+  ]
+}
+
+# ###
+
+# POST http://localhost:35153/odata/v4/document/GPItems
+# Content-Type: application/json
+
+# {
+#   "RGP_NRGP_DOC_NUM": "4000000002",
+#   "REFERENCE_TYPE": "01",
+#   "RGP_NRGP_DATE": "2021-06-27",
+#   "DOC_DATE": "2021-06-27",
+#   "BILL_TO_PARTY": "1111",
+#   "BILL_TO_PARTY_NAME": "Zee5 Trading Co",
+#   "SHIP_TO_PARTY": "2222",
+#   "SHIP_TO_PARTY_NAME": "Netflix Transport",
+#   "ADDRESS": "",
+#   "STATE_CODE": "",
+#   "TRANSPORTER_CODE": "",
+#   "TRANSPORTER_NAME": "",
+#   "TRANSPORTER_NOTE": "",
+#   "NOTE_NRGP": "",
+#   "REMARK": "",
+#   "CONTNR": "",
+#   "APPRX_VALUE": "",
+#   "WEIGHT": "",
+#   "STORE": "",
+#   "PLANNED_RETURN_DATE": "2021-06-27",
+#   "VEHICLE_NO": "",
+#   "REQUESTED_BY": "",
+#   "RECEIVED_BY": "",
+#   "DEPARTMENT": "",
+#   "EWAYBILL_NO": "",
+#   "LR_NO": "",
+#   "LR_DATE": "2021-06-27",
+#   "CONTACT_NO": "",
+#   "TRANSPORT_MODE": "",
+#   "PLACE_OF_SUPPLY": "",
+#   "toGPItems": [
+#     { 
+#       "REFERENCE_TYPE": "01",
+#       "RGP_NRGP_DOC_NUM": "4000000002",
+#       "DOC_DATE": "2021-06-27",
+#       "ITEM_NO": "10",
+#       "MATERIAL_NO": "70001290",
+#       "MATERIAL_DESC": "Motor 15KW 1440RPM",
+#       "ITEM_TEXT": "Item Text",
+#       "QUANTITY": "10",
+#       "PLANT": "2000",
+#       "STORE_LOCATION": "MC01",
+#       "RATE": 300,
+#       "VALUE": 3000,
+#       "UOM": "NOS",
+#       "TAXCODE": "1C",
+#       "CGST": 5,
+#       "SGST": 1,
+#       "IGST": 2,
+#       "CESS": 3
+#     },
+#     {
+#       "REFERENCE_TYPE": "01",
+#       "RGP_NRGP_DOC_NUM": "4000000002",
+#       "DOC_DATE": "2021-06-27",
+#       "ITEM_NO": "10",
+#       "MATERIAL_NO": "80001290",
+#       "MATERIAL_DESC": "Fans 15KW 1440RPM",
+#       "ITEM_TEXT": "Item Text",
+#       "QUANTITY": "10",
+#       "PLANT": "2000",
+#       "STORE_LOCATION": "MC01",
+#       "RATE": 300,
+#       "VALUE": 3000,
+#       "UOM": "NOS",
+#       "TAXCODE": "1C",
+#       "CGST": 7,
+#       "SGST": 7,
+#       "IGST": 7,
+#       "CESS": 7
+#     }
+#   ]
+# }
+
+###
+
+#DELETE http://localhost:4004/odata/v4/document/GPHeaders('4000000000')

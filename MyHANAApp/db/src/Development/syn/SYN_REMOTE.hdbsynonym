@@ -1,0 +1,38 @@
+{
+  "MYHANAAPP_WORKER_REMOTE2_SYN": {
+    "target": {
+      "object": "WORKER_REMOTE2",
+      "schema": "DBADMIN"
+    }
+  },
+  "MYHANAAPP_POSDATA_SYN": {
+    "target": {
+      "object": "POSDATA",
+      "schema": "DBADMIN"
+    }
+  },
+  "MYHANAAPP_POSDATA_LKP_PCODE": {
+    "target": {
+      "object": "POSDATA_LOOKUP_PCODE",
+      "schema": "DBADMIN"
+    }
+  },
+  "MYHANAAPP_POSDATA_LKP_GCODE": {
+    "target": {
+      "object": "POSDATA_LOOKUP_GLCODE",
+      "schema": "DBADMIN"
+    }
+  },
+  "MYHANAAPP_POSCLUSTER_MASTER": {
+    "target": {
+      "object": "POS_CLUSTER_MASTER",
+      "schema": "DBADMIN"
+    }
+  },
+  "MYHANAAPP_POS_BUDGET_UPLOAD": {
+    "target": {
+      "object": "POS_BUDGET_UPLOAD",
+      "schema": "DBADMIN"
+    }
+  }
+}

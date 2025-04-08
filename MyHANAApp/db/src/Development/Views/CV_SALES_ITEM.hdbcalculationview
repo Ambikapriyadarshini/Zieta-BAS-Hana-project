@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Calculation:scenario xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Calculation="http://www.sap.com/ndb/BiModelCalculation.ecore" xmlns:DataFoundation="http://www.sap.com/ndb/BiModelDataFoundation.ecore" xmlns:Dimension="http://www.sap.com/ndb/BiModelDimension.ecore" id="CV_SALES_ITEM" applyPrivilegeType="NONE" dataCategory="CUBE" schemaVersion="3.0" hierarchyGeneration="SQL" outputViewType="Aggregation" application="BAS" cacheInvalidationPeriod="NONE" enforceSqlExecution="true">
+<descriptions defaultDescription="CV_SALES_ITEM"/>
+<localVariables/>
+<variableMappings/>
+<dataSources>
+  <DataSource id="sales_item" type="TABLE_FUNCTION">
+    <resourceUri>sales_item</resourceUri>
+  </DataSource>
+</dataSources>
+<snapshotProcedures/>
+<calculationViews>
+  <calculationView xsi:type="Calculation:ProjectionView" id="Projection_1">
+    <viewAttributes>
+      <viewAttribute id="CIRCLE_MANAGER"/>
+      <viewAttribute id="MONTH"/>
+      <viewAttribute id="PRICE"/>
+      <viewAttribute id="CITY"/>
+      <viewAttribute id="QUARTER"/>
+      <viewAttribute id="ITEMQTY"/>
+      <viewAttribute id="STATE"/>
+      <viewAttribute id="YEAR"/>
+      <viewAttribute id="ITEMDESC"/>
+      <viewAttribute id="REGION"/>
+      <viewAttribute id="DATE"/>
+      <viewAttribute id="ITEMTYPE"/>
+      <viewAttribute id="CODE"/>
+      <viewAttribute id="CLUSTER_MANAGER"/>
+    </viewAttributes>
+    <calculatedViewAttributes/>
+    <input node="sales_item"/>
+  </calculationView>
+</calculationViews>
+<logicalModel id="Projection_1">
+  <attributes>
+    <attribute id="CIRCLE_MANAGER" order="1" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="CIRCLE_MANAGER"/>
+      <keyMapping columnObjectName="Projection_1" columnName="CIRCLE_MANAGER"/>
+    </attribute>
+    <attribute id="MONTH" order="2" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="MONTH"/>
+      <keyMapping columnObjectName="Projection_1" columnName="MONTH"/>
+    </attribute>
+    <attribute id="CITY" order="4" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="CITY"/>
+      <keyMapping columnObjectName="Projection_1" columnName="CITY"/>
+    </attribute>
+    <attribute id="QUARTER" order="5" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="QUARTER"/>
+      <keyMapping columnObjectName="Projection_1" columnName="QUARTER"/>
+    </attribute>
+    <attribute id="STATE" order="7" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="STATE"/>
+      <keyMapping columnObjectName="Projection_1" columnName="STATE"/>
+    </attribute>
+    <attribute id="YEAR" order="8" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="YEAR"/>
+      <keyMapping columnObjectName="Projection_1" columnName="YEAR"/>
+    </attribute>
+    <attribute id="ITEMDESC" order="9" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="ITEMDESC"/>
+      <keyMapping columnObjectName="Projection_1" columnName="ITEMDESC"/>
+    </attribute>
+    <attribute id="REGION" order="10" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="REGION"/>
+      <keyMapping columnObjectName="Projection_1" columnName="REGION"/>
+    </attribute>
+    <attribute id="DATE" order="11" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="DATE"/>
+      <keyMapping columnObjectName="Projection_1" columnName="DATE"/>
+    </attribute>
+    <attribute id="ITEMTYPE" order="12" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="ITEMTYPE"/>
+      <keyMapping columnObjectName="Projection_1" columnName="ITEMTYPE"/>
+    </attribute>
+    <attribute id="CODE" order="13" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="CODE"/>
+      <keyMapping columnObjectName="Projection_1" columnName="CODE"/>
+    </attribute>
+    <attribute id="CLUSTER_MANAGER" order="14" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="CLUSTER_MANAGER"/>
+      <keyMapping columnObjectName="Projection_1" columnName="CLUSTER_MANAGER"/>
+    </attribute>
+  </attributes>
+  <calculatedAttributes/>
+  <baseMeasures>
+    <measure id="PRICE" order="3" aggregationType="sum" measureType="simple">
+      <descriptions defaultDescription="PRICE"/>
+      <measureMapping columnObjectName="Projection_1" columnName="PRICE"/>
+      <exceptionAggregationMetadata/>
+    </measure>
+    <measure id="ITEMQTY" order="6" aggregationType="sum" measureType="simple">
+      <descriptions defaultDescription="ITEMQTY"/>
+      <measureMapping columnObjectName="Projection_1" columnName="ITEMQTY"/>
+      <exceptionAggregationMetadata/>
+    </measure>
+  </baseMeasures>
+  <calculatedMeasures/>
+  <restrictedMeasures/>
+  <localDimensions>
+    <localDimension id="HIR_ITM_RSC">
+      <attributeRef xsi:type="DataFoundation:Attribute">REGION</attributeRef>
+      <attributeRef xsi:type="DataFoundation:Attribute">STATE</attributeRef>
+      <attributeRef xsi:type="DataFoundation:Attribute">CITY</attributeRef>
+      <hierarchies>
+        <hierarchy xsi:type="Dimension:LeveledHierarchy" id="HIR_ITM_RSC" aggregateAllNodes="true" orphanedNodesHandling="ROOT_NODES" rootNodeVisibility="ADD_ROOT_NODE" withRootNode="true" nodeStyle="LEVEL_NAME_ENFORCED" cacheEnabled="true" cycleHandling="BREAKUP" emptyValueIsNull="true">
+          <descriptions defaultDescription="HIR_ITM_RSC"/>
+          <unassignedMemberProperties mode="FALSE"/>
+          <levels>
+            <level levelAttribute="REGION" levelType="MDLEVEL_TYPE_REGULAR" order="1" orderAttribute="REGION" sortDirection="ASC"/>
+            <level levelAttribute="STATE" levelType="MDLEVEL_TYPE_REGULAR" order="2" orderAttribute="STATE" sortDirection="ASC"/>
+            <level levelAttribute="CITY" levelType="MDLEVEL_TYPE_REGULAR" order="3" orderAttribute="CITY" sortDirection="ASC"/>
+          </levels>
+        </hierarchy>
+      </hierarchies>
+    </localDimension>
+    <localDimension id="HIR_ITM_DT">
+      <attributeRef xsi:type="DataFoundation:Attribute">YEAR</attributeRef>
+      <attributeRef xsi:type="DataFoundation:Attribute">QUARTER</attributeRef>
+      <attributeRef xsi:type="DataFoundation:Attribute">MONTH</attributeRef>
+      <hierarchies>
+        <hierarchy xsi:type="Dimension:LeveledHierarchy" id="HIR_ITM_DT" aggregateAllNodes="true" orphanedNodesHandling="ROOT_NODES" rootNodeVisibility="ADD_ROOT_NODE" withRootNode="true" nodeStyle="LEVEL_NAME_ENFORCED" cacheEnabled="true" cycleHandling="BREAKUP" emptyValueIsNull="true">
+          <descriptions defaultDescription="HIR_ITM_DT"/>
+          <unassignedMemberProperties mode="FALSE"/>
+          <levels>
+            <level levelAttribute="YEAR" levelType="MDLEVEL_TYPE_REGULAR" order="1" orderAttribute="YEAR" sortDirection="ASC"/>
+            <level levelAttribute="QUARTER" levelType="MDLEVEL_TYPE_REGULAR" order="2" orderAttribute="QUARTER" sortDirection="ASC"/>
+            <level levelAttribute="MONTH" levelType="MDLEVEL_TYPE_REGULAR" order="3" orderAttribute="MONTH" sortDirection="ASC"/>
+          </levels>
+        </hierarchy>
+      </hierarchies>
+    </localDimension>
+    <localDimension id="HIR_ITM_TYP">
+      <attributeRef xsi:type="DataFoundation:Attribute">ITEMTYPE</attributeRef>
+      <attributeRef xsi:type="DataFoundation:Attribute">ITEMDESC</attributeRef>
+      <hierarchies>
+        <hierarchy xsi:type="Dimension:LeveledHierarchy" id="HIR_ITM_TYP" aggregateAllNodes="true" orphanedNodesHandling="ROOT_NODES" rootNodeVisibility="ADD_ROOT_NODE" withRootNode="true" nodeStyle="LEVEL_NAME_ENFORCED" cacheEnabled="true" cycleHandling="BREAKUP" emptyValueIsNull="true">
+          <descriptions defaultDescription="HIR_ITM_TYP"/>
+          <unassignedMemberProperties mode="FALSE"/>
+          <levels>
+            <level levelAttribute="ITEMTYPE" levelType="MDLEVEL_TYPE_REGULAR" order="1" orderAttribute="ITEMTYPE" sortDirection="ASC"/>
+            <level levelAttribute="ITEMDESC" levelType="MDLEVEL_TYPE_REGULAR" order="2" orderAttribute="ITEMDESC" sortDirection="ASC"/>
+          </levels>
+        </hierarchy>
+      </hierarchies>
+    </localDimension>
+  </localDimensions>
+</logicalModel>
+<layout>
+  <shapes>
+    <shape expanded="true" modelObjectName="Output" modelObjectNameSpace="MeasureGroup">
+      <upperLeftCorner x="92" y="112"/>
+    
+      <rectangleSize width="160"/>
+    </shape>
+  
+    <shape expanded="true" modelObjectName="Projection_1" modelObjectNameSpace="CalculationView">
+      <upperLeftCorner x="92" y="217"/>
+      <rectangleSize height="30" width="160"/>
+    </shape>
+  </shapes>
+</layout>
+</Calculation:scenario>

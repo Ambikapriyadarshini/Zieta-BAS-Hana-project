@@ -1,0 +1,534 @@
+<mvc:View controllerName="project1.controller.View1"
+    xmlns="sap.m"
+    xmlns:core="sap.ui.core"
+    xmlns:layout="sap.ui.layout"
+    xmlns:form="sap.ui.layout.form"
+    xmlns:ui="sap.ui.table"
+    xmlns:mvc="sap.ui.core.mvc">
+    <Page>
+        <customHeader>
+            <Toolbar>
+                <Title text="Gate Pass System"/>
+            </Toolbar>
+        </customHeader>
+        <FlexBox alignContent="Center" alignItems="Center" justifyContent="Center">
+            <Label text="Choose a Document Type:" labelFor="idDocComboBox" class="sapUiSmallMarginTop"/>
+            <ComboBox id="idDocComboBox" selectionChange="onComboSelectionChange" class="sapUiSmallMarginTop">
+                <core:Item />
+                <core:Item key="01" text="Delivery Challan" />
+                <core:Item key="02" text="Returnable Out" />
+                <core:Item key="03" text="Non-Returnable Out" />
+                <core:Item key="04" text="Returnable In" />
+            </ComboBox>
+        </FlexBox>
+        <!-- Panel to Display Initial List of RGP_DOC_NUM & SHIP_TO_PARTY_NAME -->
+        <Panel visible="false" id="idSelTableList" class="sapUiLargeMarginBeginEnd" width="95%">
+            <HBox id="idHBoxTableList">
+                <Table id="idTable" mode="SingleSelectLeft" items="{path:'/GPHeaders', parameters:{$$updateGroupId : '$auto'}}" selectionChange="onSelectionChange">
+                    <headerToolbar>
+                        <Toolbar >
+                            <ToolbarSpacer />
+                              <Button type="Emphasized" class="sapUiSmallMarginEnd" id="bCreate" icon="sap-icon://add" press="onCreateNew" text="Create New" />
+                              
+                            <!-- <Button type="Emphasized" id="bCreate" icon="sap-icon://add" press="onPressCreate" text="Create" visible="true"/>
+                            <Button type="Default" id="bEdit" icon="sap-icon://edit" press="onPressEdit" text="Edit" visible="true"/> -->
+                        </Toolbar>
+                    </headerToolbar>
+                    <columns>
+                        <Column>
+                            <Text text="RGP/NRGP Docment No"></Text>
+                        </Column>
+                        <Column>
+                            <Text text="SHIP TO PARTY NAME"></Text>
+                        </Column>
+                         <Column>
+                            <Text text="REQUESTED BY"></Text>
+                        </Column>
+                         <Column>
+                            <Text text="VEHICLE NO"></Text>
+                        </Column>
+                         <Column>
+                            <Text text="Received By"></Text>
+                        </Column>
+                    </columns>
+                    <items>
+                        <ColumnListItem press=".onListItemPress">
+                            <cells>
+                                <!-- GatePass Model declared in manifest as OData Model -->
+                                <Text text="{RGP_DOC_NUM}"/>
+                                <Text text="{SHIP_TO_PARTY_NAME}"/>
+                                <Text text="{REQUESTED_BY}"/>
+                                <Text text="{VEHICLE_NO}"/>
+                                 <Text text="{RECEIVED_BY}"/>
+                            </cells>
+                        </ColumnListItem>
+                    </items>
+                </Table>
+            </HBox>
+        </Panel>
+
+        <content alignContent="Center">
+          <Panel id="idPanelButtons" width="95%" class="sapUiLargeMarginBeginEnd" visible="false">
+                <FlexBox justifyContent="End">
+                    <HBox alignContent="End">
+                  
+                     
+                    <!-- <Button type="Emphasized" text="Save Header" id="btnSaveDetails" press="onSaveHeaderData"></Button> -->
+                    <Button type="Emphasized" visible="false" class="sapUiSmallMarginEnd" id="idCreateNew" icon="sap-icon://save" press="onSaveDeep" text="Save Deep data" />
+                        <Button text="Update header" type="Emphasized" id="idUpdateHeader" press="onUpdateHeaderdata"></Button>
+                         <Button text="Cancel" type="Transparent" id="idCancel" press="onCancel"></Button>
+                    </HBox>
+                </FlexBox>
+            </Panel>
+
+            <Panel id="idHeadeForm" class="sapUiLargeMarginBeginEnd" visible="false" width="95%">
+                <headerToolbar>
+                    <OverflowToolbar>
+                        <Title text="Header Details"/>
+                    </OverflowToolbar>
+                </headerToolbar>
+                <form:Form width="100%" id="idform">
+                    <form:layout>
+                        <form:ResponsiveGridLayout id="idEditSF" visible="true" labelSpanXL="4" labelSpanM="4" emptySpanXL="0" columnsXL="3" columnsL="3" columnsM="3" singleContainerFullSize="false"/>
+                    </form:layout>
+                    <form:FormContainer>
+                        <form:FormElement>
+                            <form:label>
+                                <Label text="Reference Type" class="sapUiTinyMarginTop"/>
+                            </form:label>
+                            <form:fields>
+                                <Label id="idEditRefDocType" />
+                            </form:fields>
+                        </form:FormElement>
+                        <form:FormElement>
+                            <form:label>
+                                <Label text="RGP/NRGP Document" class="sapUiTinyMarginTop"/>
+                            </form:label>
+                            <form:fields>
+                                <Input id="idKeyinc"  width="12rem" editable="false"/>
+                            </form:fields>
+                        </form:FormElement>
+                        <form:FormElement>
+                            <form:label>
+                                <Label text="RGP/NRGP Date" class="sapUiTinyMarginTop"/>
+                            </form:label>
+                            <form:fields>
+                                <DatePicker id="rgpDocDateEdit" value="{ path: 'RGP_NRGP_DATE',
+                                                    'type':'sap.ui.model.type.Date',
+						                            'formatOptions': {
+							                            'pattern': 'yyyy-MM-dd'
+						                                }
+					                                }" class="sapUiSmallMarginBottom"/>
+                            </form:fields>
+                        </form:FormElement>
+                        <form:FormElement>
+                            <form:label>
+                                <Label text="Bill To Party " class="sapUiTinyMarginTop"/>
+                            </form:label>
+                            <form:fields>
+                                 <ComboBox id="myComboBox" selectionChange="onchangeBilltoP" items="{/GPPartners}">
+                                 <core:Item key="{BILL_TO_PARTY_NAME}" text="{BILL_TO_PARTY}" />
+                                        </ComboBox>
+                                <Input id="billtoPName" value="{BILL_TO_PARTY_NAME}"/>
+                            </form:fields>
+                        </form:FormElement>
+                        <form:FormElement>
+                            <form:label>
+                                <Label text="Ship To Party " class="sapUiTinyMarginTop" required="true"/>
+                            </form:label>
+                            <form:fields>
+                                 <ComboBox id="myComboBox2" selectionChange="onchangeShtoP" items="{/GPPartners}">
+                                 <core:Item key="{SHIP_TO_PARTY_NAME},{ADDRESS},{STATE_CODE}" text="{SHIP_TO_PARTY}" />
+                                        </ComboBox>
+                                <Input id="shipToPartyNameEdit" />
+                            </form:fields>
+                        </form:FormElement>
+                        <form:FormElement>
+                            <form:label>
+                                <Label text="Address" class="sapUiTinyMarginTop" required="true"/>
+                            </form:label>
+                            <form:fields>
+                                <Input id="addressEdit"  />
+                            </form:fields>
+                        </form:FormElement>
+                        <form:FormElement>
+                            <form:label>
+                                <Label text="State Code" class="sapUiTinyMarginTop"/>
+                            </form:label>
+                            <form:fields>
+                                <Input id="stateCodeEdit"  width="25em"/>
+                            </form:fields>
+                        </form:FormElement>
+                        <!-- <form:FormElement>
+                            <form:label>
+                                <Label text="GSTIN" class="sapUiTinyMarginTop"/>
+                            </form:label>
+                            <form:fields>
+                                <Input id="gstinEdit" value="{jsonModel>/SHIP_TO_PARTY}"/>
+                            </form:fields>
+                        </form:FormElement> -->
+                        <form:FormElement>
+                            <form:label>
+                                <Label text="Transporter" class="sapUiTinyMarginTop" required="true"/>
+                            </form:label>
+                            <form:fields>
+                                <Input id="transporterEdit" value="{TRANSPORTER_CODE}"/>
+                                <Input id="transporterNameEdit" value="{TRANSPORTER_NAME}"/>
+                            </form:fields>
+                        </form:FormElement>
+                        <form:FormElement>
+                            <form:label>
+                                <Label text="Transporter Note" class="sapUiTinyMarginTop"/>
+                            </form:label>
+                            <form:fields>
+                                <Input id="transporterNoteEdit" value="{TRANSPORTER_NOTE}"/>
+                            </form:fields>
+                        </form:FormElement>
+                    </form:FormContainer>
+                    <form:FormContainer>
+                        <form:FormElement>
+                            <form:label>
+                                <Label text="Note for NRGP" class="sapUiTinyMarginTop"/>
+                            </form:label>
+                            <form:fields>
+                                <Input id="noteOfNrgpEdit" value="{NOTE_NRGP}" width="15rem"/>
+                            </form:fields>
+                        </form:FormElement>
+                        <form:FormElement>
+                            <form:label>
+                                <Label text="Remarks" class="sapUiTinyMarginTop"/>
+                            </form:label>
+                            <form:fields>
+                                <Input id="remarksEdit" value="{REMARK}" width="15rem"/>
+                            </form:fields>
+                        </form:FormElement>
+                        <form:FormElement>
+                            <form:label>
+                                <Label text="No of Contains" class="sapUiTinyMarginTop"/>
+                            </form:label>
+                            <form:fields>
+                                <Input id="noContainsEdit" value="{CONTNR}" width="15rem"/>
+                            </form:fields>
+                        </form:FormElement>
+                        <form:FormElement>
+                            <form:label>
+                                <Label text="Approximate Value" class="sapUiTinyMarginTop" required="true"/>
+                            </form:label>
+                            <form:fields>
+                                <Input id="approxValueEdit" value="{APPRX_VALUE}" width="15rem"/>
+                            </form:fields>
+                        </form:FormElement>
+                        <form:FormElement>
+                            <form:label>
+                                <Label text="Weights" class="sapUiTinyMarginTop" required="true"/>
+                            </form:label>
+                            <form:fields>
+                                <Input id="weightEdit" value="{WEIGHT}" width="15rem"/>
+                            </form:fields>
+                        </form:FormElement>
+                        <form:FormElement>
+                            <form:label>
+                                <Label text="Store" class="sapUiTinyMarginTop"/>
+                            </form:label>
+                            <form:fields >
+                                <ComboBox id="storeEdit" selectedKey="store" width="15rem">
+                                    <core:Item key="PM1" text="PM1"/>
+                                    <core:Item key="PM2" text="PM2"/>
+                                </ComboBox >
+                            </form:fields>
+                        </form:FormElement>
+                        <form:FormElement>
+                            <form:label>
+                                <Label text="Planned Return Date" class="sapUiTinyMarginTop"/>
+                            </form:label>
+                            <form:fields>
+                                <!-- <DatePicker id="planReturnDate" placeholder="Enter Return Date" change="handleChange" class="sapUiSmallMarginBottom"/> -->
+                                <DatePicker id="planReturnDateEdit" value="{path: 'PLANNED_RETURN_DATE',
+                                            'type':'sap.ui.model.type.Date',
+						                            'formatOptions': {
+							                            'pattern': 'yyyy-MM-dd'
+						                                }
+                                                    }" class="sapUiSmallMarginBottom" width="15rem"/>
+                            </form:fields>
+                        </form:FormElement>
+                        <form:FormElement>
+                            <form:label>
+                                <Label text="Vehicle No" class="sapUiTinyMarginTop" required="true"/>
+                            </form:label>
+                            <form:fields>
+                                <Input id="vehicleNoEdit" value="{VEHICLE_NO}" width="15rem"/>
+                            </form:fields>
+                        </form:FormElement>
+                        <form:FormElement>
+                            <form:label>
+                                <Label text="Requested By" class="sapUiTinyMarginTop"/>
+                            </form:label>
+                            <form:fields>
+                                <Input id="idReqBy" value="{REQUESTED_BY}" width="15rem"/>
+                            </form:fields>
+                        </form:FormElement>
+                    </form:FormContainer>
+                    <form:FormContainer>
+                        <form:FormElement>
+                            <form:label>
+                                <Label text="Received By" class="sapUiTinyMarginTop"/>
+                            </form:label>
+                            <form:fields>
+                                <Input id="recievedByEdit" value="{RECEIVED_BY}" width="15rem"/>
+                            </form:fields>
+                        </form:FormElement>
+                        <form:FormElement>
+                            <form:label>
+                                <Label text="Department" class="sapUiTinyMarginTop"/>
+                            </form:label>
+                            <form:fields>
+                                <Input id="departmentEdit" value="{DEPARTMENT}" width="15rem"/>
+                            </form:fields>
+                        </form:FormElement>
+                        <form:FormElement>
+                            <form:label>
+                                <Label text=" Eway Bill No" class="sapUiTinyMarginTop"/>
+                            </form:label>
+                            <form:fields>
+                                <Input id="ewayBillNoEdit" value="{EWAYBILL_NO}" width="15rem"/>
+                            </form:fields>
+                        </form:FormElement>
+                        <form:FormElement>
+                            <form:label>
+                                <Label text="LR No" class="sapUiTinyMarginTop"/>
+                            </form:label>
+                            <form:fields>
+                                <Input id="lrNoEdit" value="{LR_NO}" width="15rem"/>
+                            </form:fields>
+                        </form:FormElement>
+                        <form:FormElement>
+                            <form:label>
+                                <Label text="LR Date" class="sapUiTinyMarginTop"/>
+                            </form:label>
+                            <form:fields>
+                                <!-- <DatePicker id="lrDate" placeholder="Enter LR Date" change="handleChange" class="sapUiSmallMarginBottom"/> -->
+                                <DatePicker id="lrDateEdit" value="{
+                                
+                                path: 'LR_DATE',
+                                'type':'sap.ui.model.type.Date',
+						                            'formatOptions': {
+							                            'pattern': 'yyyy-MM-dd'
+						                                }
+                                
+                                }" displayFormat="yyyy/MM/dd" change="handleChange" class="sapUiSmallMarginBottom" width="15rem"/>
+                            </form:fields>
+                        </form:FormElement>
+                        <form:FormElement>
+                            <form:label>
+                                <Label text="Contact No" class="sapUiTinyMarginTop"/>
+                            </form:label>
+                            <form:fields>
+                                <Input id="contactNoEdit" value="{CONTACT_NO}" width="15rem" />
+                            </form:fields>
+                        </form:FormElement>
+                        <form:FormElement>
+                            <form:label>
+                                <Label text="Mode of Transport" class="sapUiTinyMarginTop" required="true"/>
+                            </form:label>
+                            <form:fields>
+                                <Input id="modeOfTransEdit" value="{TRANSPORT_MODE}" width="15rem"/>
+                            </form:fields>
+                        </form:FormElement>
+                        <form:FormElement>
+                            <form:label>
+                                <Label text="Place of Supply" class="sapUiTinyMarginTop" required="true"/>
+                            </form:label>
+                            <form:fields>
+                                <Input id="placeOfSupplyEdit" value="{PLACE_OF_SUPPLY}" width="15rem"/>
+                            </form:fields>
+                        </form:FormElement>
+                    </form:FormContainer>
+                </form:Form>
+            </Panel>
+          
+          
+            <Panel id="idItemTable" width="95%" class="sapUiLargeMarginBeginEnd sapUiSmallMarginTop" accessibleRole="Region" visible="false">
+                <headerToolbar>
+                    <OverflowToolbar>
+                        <Title text="Item Details"/>
+                    </OverflowToolbar>
+                </headerToolbar>
+                <VBox>
+
+                    <VBox id="tableContainer" class="sapUiSmallMargin">
+                        <Table id="productEditTable" growing="true" growingScrollToLoad="true" items="{path:'toGPItems',parameters:{$$updateGroupId : 'auto'}}">
+
+                            <headerToolbar>
+                                <Toolbar>
+                                    <ToolbarSpacer></ToolbarSpacer>
+                                    <Button icon="sap-icon://add" press="onAddItemRow" text="Add"></Button>
+                                    <!-- <Button text="Update Item" type="Emphasized" id="idUpdateItem" press="onUpdateItemdata" visible="false"/> -->
+                                </Toolbar>
+                            </headerToolbar>
+                            <columns>
+                                <Column>
+                                    <Text text="Item kay" />
+                                </Column>
+                                <Column>
+                                    <Text text="Item No" />
+                                </Column>
+                                <Column>
+                                    <Text text="Material No" />
+                                </Column>
+                                <Column>
+                                    <Text text="Material Desc" />
+                                </Column>
+                                <Column>
+                                    <Text text="Quantity" />
+                                </Column>
+                                <Column>
+                                    <Text text="Plant" />
+                                </Column>
+                                <Column>
+                                    <Text text="Store Location" />
+                                </Column>
+                                <Column>
+                                    <Text text="Rate" />
+                                </Column>
+                                <Column>
+                                    <Text text="Value" />
+                                </Column>
+                                <Column>
+                                    <Text text="UOM" />
+                                </Column>
+                                <Column>
+                                    <Text text="TaxCode" />
+                                </Column>
+                                <Column>
+                                    <Text text="CGST" />
+                                </Column>
+                                <Column>
+                                    <Text text="SGST" />
+                                </Column>
+                                <Column>
+                                    <Text text="IGST" />
+                                </Column>
+                                <Column>
+                                    <Text text="CESS" />
+                                </Column>
+                                <Column>
+                                    <Text text="Action" />
+                                </Column>
+                            </columns>
+                            <items>
+                                <ColumnListItem>
+                                    <cells>
+                                      <Input value="{ITEM_KEY}" />
+                                        <Input value="{ITEM_NO}" />
+                                        <Input value="{MATERIAL_NO}" />
+                                        <Input value="{MATERIAL_DESC}" />
+                                        <Input value="{QUANTITY}" />
+                                        <Input value="{PLANT}" />
+                                        <Input value="{STORE_LOCATION}" />
+                                        <Input value="{RATE}" />
+                                        <Input value="{VALUE}" />
+                                        <Input value="{toGPItems/UOM}" />
+                                        <Input value="{TAXCODE}" />
+                                        <Input value="{CGST}" />
+                                        <Input value="{SGST}" />
+                                        <Input value="{IGST}" />
+                                        <Input value="{CESS}" />
+                                      
+                                        <Button icon="sap-icon://delete" press="onDeleteOdataRow" type="Reject"></Button>
+                                    </cells>
+                                </ColumnListItem>
+                            </items>
+                        </Table>
+                    </VBox>
+                    
+                     <VBox id="TableCreate" visible="false"  class="sapUiSmallMargin">
+                        <Table id="ItemCreateTab" growing="true" growingScrollToLoad="true" items="{path:'myJsonModel>/toGPItems',parameters:{$$updateGroupId : 'auto'}}">
+
+                            <headerToolbar>
+                                <Toolbar>
+                                    <ToolbarSpacer></ToolbarSpacer>
+                                    <Button icon="sap-icon://add" press="CreateJsonRow" text="Add"></Button>
+                            
+                                </Toolbar>
+                            </headerToolbar>
+                            <columns>
+                                <Column>
+                                    <Text text="Item kay" />
+                                </Column>
+                                <Column>
+                                    <Text text="Item No" />
+                                </Column>
+                                <Column>
+                                    <Text text="Material No" />
+                                </Column>
+                                <Column>
+                                    <Text text="Material Desc" />
+                                </Column>
+                                <Column>
+                                    <Text text="Quantity" />
+                                </Column>
+                                <Column>
+                                    <Text text="Plant" />
+                                </Column>
+                                <Column>
+                                    <Text text="Store Location" />
+                                </Column>
+                                <Column>
+                                    <Text text="Rate" />
+                                </Column>
+                                <Column>
+                                    <Text text="Value" />
+                                </Column>
+                                <Column>
+                                    <Text text="UOM" />
+                                </Column>
+                                <Column>
+                                    <Text text="TaxCode" />
+                                </Column>
+                                <Column>
+                                    <Text text="CGST" />
+                                </Column>
+                                <Column>
+                                    <Text text="SGST" />
+                                </Column>
+                                <Column>
+                                    <Text text="IGST" />
+                                </Column>
+                                <Column>
+                                    <Text text="CESS" />
+                                </Column>
+                                <Column>
+                                    <Text text="Action" />
+                                </Column>
+                            </columns>
+                            <items>
+                                <ColumnListItem>
+                                    <cells>
+                                      <Input value="{myJsonModel>ITEM_KEY}" />
+                                        <Input value="{myJsonModel>myJsonModel>ITEM_NO}" />
+                                        <Input value="{myJsonModel>MATERIAL_NO}" />
+                                        <Input value="{myJsonModel>MATERIAL_DESC}" />
+                                        <Input value="{myJsonModel>QUANTITY}" />
+                                        <Input value="{myJsonModel>PLANT}" />
+                                        <Input value="{myJsonModel>STORE_LOCATION}" />
+                                        <Input value="{myJsonModel>RATE}" />
+                                        <Input value="{myJsonModel>VALUE}" />
+                                        <Input value="{myJsonModel>toGPItems/UOM}" />
+                                        <Input value="{myJsonModel>TAXCODE}" />
+                                        <Input value="{myJsonModel>CGST}" />
+                                        <Input value="{myJsonModel>SGST}" />
+                                        <Input value="{myJsonModel>IGST}" />
+                                        <Input value="{myJsonModel>CESS}" />
+                                      
+                                        <Button icon="sap-icon://delete" press="onDeleteRow" type="Reject"></Button>
+                                    </cells>
+                                </ColumnListItem>
+                            </items>
+                        </Table>
+                    </VBox>
+                </VBox>
+            </Panel>
+        </content>
+    </Page>
+</mvc:View>
+ 

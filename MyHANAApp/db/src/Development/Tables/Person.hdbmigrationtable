@@ -1,0 +1,14 @@
+== Version = 2
+column table PERSON (
+   PERSONID         BIGINT         not null,
+   FIRSTNAME        NVARCHAR(100),
+   LNAME            NVARCHAR(100),
+   STREET           NVARCHAR(100),
+   CITY             NVARCHAR(100)
+);
+== migration = 2
+alter table PERSON add (STREET varchar(100));
+alter table PERSON add (CITY varchar(100));
+
+
+

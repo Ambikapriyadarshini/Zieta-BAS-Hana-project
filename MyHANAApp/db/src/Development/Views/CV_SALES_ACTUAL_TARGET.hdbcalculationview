@@ -1,0 +1,207 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Calculation:scenario xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Calculation="http://www.sap.com/ndb/BiModelCalculation.ecore" xmlns:DataFoundation="http://www.sap.com/ndb/BiModelDataFoundation.ecore" xmlns:Dimension="http://www.sap.com/ndb/BiModelDimension.ecore" id="CV_SALES_ACTUAL_TARGET" applyPrivilegeType="NONE" dataCategory="CUBE" schemaVersion="3.0" hierarchyGeneration="SQL" outputViewType="Aggregation" application="BAS" cacheInvalidationPeriod="NONE" enforceSqlExecution="true">
+<descriptions defaultDescription="CV_SALES_ACTUAL_TARGET"/>
+<localVariables/>
+<variableMappings/>
+<dataSources>
+  <DataSource id="SALES_BUDGET" type="TABLE_FUNCTION">
+    <resourceUri>SALES_BUDGET</resourceUri>
+  </DataSource>
+</dataSources>
+<snapshotProcedures/>
+<calculationViews>
+  <calculationView xsi:type="Calculation:ProjectionView" id="Projection_1">
+    <viewAttributes>
+      <viewAttribute id="BRAND_NAME"/>
+      <viewAttribute id="DATE"/>
+      <viewAttribute id="NET_VALUE"/>
+      <viewAttribute id="STATE"/>
+      <viewAttribute id="STORE_OPENING_DATE"/>
+      <viewAttribute id="CODE"/>
+      <viewAttribute id="REGION"/>
+      <viewAttribute id="ACTUAL_BUDGET"/>
+      <viewAttribute id="PLANT"/>
+      <viewAttribute id="WEEK_DAY"/>
+      <viewAttribute id="SALE_TYPE"/>
+      <viewAttribute id="DAY"/>
+      <viewAttribute id="OUTLET_NAME"/>
+      <viewAttribute id="COVERS"/>
+      <viewAttribute id="ARL_MANAGER"/>
+      <viewAttribute id="WEEK"/>
+      <viewAttribute id="MANAGED_BY"/>
+      <viewAttribute id="QUARTER"/>
+      <viewAttribute id="TRANSACTIONS"/>
+      <viewAttribute id="CIRCLE_MANAGER"/>
+      <viewAttribute id="MONTH"/>
+      <viewAttribute id="OUTLET_TYPE"/>
+      <viewAttribute id="YEAR"/>
+      <viewAttribute id="TARGET_BUDGET"/>
+      <viewAttribute id="CITY"/>
+    </viewAttributes>
+    <calculatedViewAttributes/>
+    <input node="SALES_BUDGET"/>
+  </calculationView>
+</calculationViews>
+<logicalModel id="Projection_1">
+  <attributes>
+    <attribute id="BRAND_NAME" order="1" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="BRAND_NAME"/>
+      <keyMapping columnObjectName="Projection_1" columnName="BRAND_NAME"/>
+    </attribute>
+    <attribute id="DATE" order="2" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="DATE"/>
+      <keyMapping columnObjectName="Projection_1" columnName="DATE"/>
+    </attribute>
+    <attribute id="STATE" order="4" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="STATE"/>
+      <keyMapping columnObjectName="Projection_1" columnName="STATE"/>
+    </attribute>
+    <attribute id="STORE_OPENING_DATE" order="5" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="STORE_OPENING_DATE"/>
+      <keyMapping columnObjectName="Projection_1" columnName="STORE_OPENING_DATE"/>
+    </attribute>
+    <attribute id="CODE" order="6" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="CODE"/>
+      <keyMapping columnObjectName="Projection_1" columnName="CODE"/>
+    </attribute>
+    <attribute id="REGION" order="7" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="REGION"/>
+      <keyMapping columnObjectName="Projection_1" columnName="REGION"/>
+    </attribute>
+    <attribute id="PLANT" order="9" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="PLANT"/>
+      <keyMapping columnObjectName="Projection_1" columnName="PLANT"/>
+    </attribute>
+    <attribute id="WEEK_DAY" order="10" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="WEEK_DAY"/>
+      <keyMapping columnObjectName="Projection_1" columnName="WEEK_DAY"/>
+    </attribute>
+    <attribute id="SALE_TYPE" order="11" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="SALE_TYPE"/>
+      <keyMapping columnObjectName="Projection_1" columnName="SALE_TYPE"/>
+    </attribute>
+    <attribute id="DAY" order="12" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="DAY"/>
+      <keyMapping columnObjectName="Projection_1" columnName="DAY"/>
+    </attribute>
+    <attribute id="OUTLET_NAME" order="13" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="OUTLET_NAME"/>
+      <keyMapping columnObjectName="Projection_1" columnName="OUTLET_NAME"/>
+    </attribute>
+    <attribute id="ARL_MANAGER" order="15" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="ARL_MANAGER"/>
+      <keyMapping columnObjectName="Projection_1" columnName="ARL_MANAGER"/>
+    </attribute>
+    <attribute id="WEEK" order="16" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="WEEK"/>
+      <keyMapping columnObjectName="Projection_1" columnName="WEEK"/>
+    </attribute>
+    <attribute id="MANAGED_BY" order="17" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="MANAGED_BY"/>
+      <keyMapping columnObjectName="Projection_1" columnName="MANAGED_BY"/>
+    </attribute>
+    <attribute id="QUARTER" order="18" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="QUARTER"/>
+      <keyMapping columnObjectName="Projection_1" columnName="QUARTER"/>
+    </attribute>
+    <attribute id="CIRCLE_MANAGER" order="20" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="CIRCLE_MANAGER"/>
+      <keyMapping columnObjectName="Projection_1" columnName="CIRCLE_MANAGER"/>
+    </attribute>
+    <attribute id="MONTH" order="21" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="MONTH"/>
+      <keyMapping columnObjectName="Projection_1" columnName="MONTH"/>
+    </attribute>
+    <attribute id="OUTLET_TYPE" order="22" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="OUTLET_TYPE"/>
+      <keyMapping columnObjectName="Projection_1" columnName="OUTLET_TYPE"/>
+    </attribute>
+    <attribute id="YEAR" order="23" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="YEAR"/>
+      <keyMapping columnObjectName="Projection_1" columnName="YEAR"/>
+    </attribute>
+    <attribute id="CITY" order="25" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="CITY"/>
+      <keyMapping columnObjectName="Projection_1" columnName="CITY"/>
+    </attribute>
+  </attributes>
+  <calculatedAttributes/>
+  <baseMeasures>
+    <measure id="NET_VALUE" order="3" aggregationType="sum" measureType="simple">
+      <descriptions defaultDescription="NET_VALUE"/>
+      <measureMapping columnObjectName="Projection_1" columnName="NET_VALUE"/>
+      <exceptionAggregationMetadata/>
+    </measure>
+    <measure id="ACTUAL_BUDGET" order="8" aggregationType="sum" measureType="simple">
+      <descriptions defaultDescription="ACTUAL_BUDGET"/>
+      <measureMapping columnObjectName="Projection_1" columnName="ACTUAL_BUDGET"/>
+      <exceptionAggregationMetadata/>
+    </measure>
+    <measure id="COVERS" order="14" aggregationType="sum" measureType="simple">
+      <descriptions defaultDescription="COVERS"/>
+      <measureMapping columnObjectName="Projection_1" columnName="COVERS"/>
+      <exceptionAggregationMetadata/>
+    </measure>
+    <measure id="TRANSACTIONS" order="19" aggregationType="sum" measureType="simple">
+      <descriptions defaultDescription="TRANSACTIONS"/>
+      <measureMapping columnObjectName="Projection_1" columnName="TRANSACTIONS"/>
+      <exceptionAggregationMetadata/>
+    </measure>
+    <measure id="TARGET_BUDGET" order="24" aggregationType="sum" measureType="simple">
+      <descriptions defaultDescription="TARGET_BUDGET"/>
+      <measureMapping columnObjectName="Projection_1" columnName="TARGET_BUDGET"/>
+      <exceptionAggregationMetadata/>
+    </measure>
+  </baseMeasures>
+  <calculatedMeasures/>
+  <restrictedMeasures/>
+  <localDimensions>
+    <localDimension id="HIR_ITM_DT">
+      <attributeRef xsi:type="DataFoundation:Attribute">YEAR</attributeRef>
+      <attributeRef xsi:type="DataFoundation:Attribute">QUARTER</attributeRef>
+      <attributeRef xsi:type="DataFoundation:Attribute">MONTH</attributeRef>
+      <hierarchies>
+        <hierarchy xsi:type="Dimension:LeveledHierarchy" id="HIR_ITM_DT" aggregateAllNodes="true" orphanedNodesHandling="ROOT_NODES" rootNodeVisibility="ADD_ROOT_NODE" withRootNode="true" nodeStyle="LEVEL_NAME_ENFORCED" cacheEnabled="true" cycleHandling="BREAKUP" emptyValueIsNull="true">
+          <descriptions defaultDescription="HIR_ITM_DT"/>
+          <unassignedMemberProperties mode="FALSE"/>
+          <levels>
+            <level levelAttribute="YEAR" levelType="MDLEVEL_TYPE_REGULAR" order="1" orderAttribute="YEAR" sortDirection="ASC"/>
+            <level levelAttribute="QUARTER" levelType="MDLEVEL_TYPE_REGULAR" order="2" orderAttribute="QUARTER" sortDirection="ASC"/>
+            <level levelAttribute="MONTH" levelType="MDLEVEL_TYPE_REGULAR" order="3" orderAttribute="MONTH" sortDirection="ASC"/>
+          </levels>
+        </hierarchy>
+      </hierarchies>
+    </localDimension>
+    <localDimension id="HIR_ITM_RSC">
+      <attributeRef xsi:type="DataFoundation:Attribute">REGION</attributeRef>
+      <attributeRef xsi:type="DataFoundation:Attribute">STATE</attributeRef>
+      <attributeRef xsi:type="DataFoundation:Attribute">CITY</attributeRef>
+      <hierarchies>
+        <hierarchy xsi:type="Dimension:LeveledHierarchy" id="HIR_ITM_RSC" aggregateAllNodes="true" orphanedNodesHandling="ROOT_NODES" rootNodeVisibility="ADD_ROOT_NODE" withRootNode="true" nodeStyle="LEVEL_NAME_ENFORCED" cacheEnabled="true" cycleHandling="BREAKUP" emptyValueIsNull="true">
+          <descriptions defaultDescription="HIR_ITM_RSC"/>
+          <unassignedMemberProperties mode="FALSE"/>
+          <levels>
+            <level levelAttribute="REGION" levelType="MDLEVEL_TYPE_REGULAR" order="1" orderAttribute="REGION" sortDirection="ASC"/>
+            <level levelAttribute="STATE" levelType="MDLEVEL_TYPE_REGULAR" order="2" orderAttribute="STATE" sortDirection="ASC"/>
+            <level levelAttribute="CITY" levelType="MDLEVEL_TYPE_REGULAR" order="3" orderAttribute="CITY" sortDirection="ASC"/>
+          </levels>
+        </hierarchy>
+      </hierarchies>
+    </localDimension>
+  </localDimensions>
+</logicalModel>
+<layout>
+  <shapes>
+    <shape expanded="true" modelObjectName="Output" modelObjectNameSpace="MeasureGroup">
+      <upperLeftCorner x="91" y="112"/>
+    
+      <rectangleSize width="160"/>
+    </shape>
+  
+    <shape expanded="true" modelObjectName="Projection_1" modelObjectNameSpace="CalculationView">
+      <upperLeftCorner x="79" y="185"/>
+      <rectangleSize height="30" width="160"/>
+    </shape>
+  </shapes>
+</layout>
+</Calculation:scenario>
