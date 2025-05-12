@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Calculation:scenario xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Calculation="http://www.sap.com/ndb/BiModelCalculation.ecore" id="CV_SALES_ITEM1" applyPrivilegeType="NONE" dataCategory="CUBE" schemaVersion="3.0" hierarchyGeneration="SQL" outputViewType="Aggregation" application="BAS" cacheInvalidationPeriod="NONE" enforceSqlExecution="true">
+<descriptions defaultDescription="CV_SALES_ITEM1"/>
+<localVariables/>
+<variableMappings/>
+<dataSources>
+  <DataSource id="sales_item" type="TABLE_FUNCTION">
+    <resourceUri>sales_item</resourceUri>
+  </DataSource>
+</dataSources>
+<snapshotProcedures/>
+<calculationViews>
+  <calculationView xsi:type="Calculation:ProjectionView" id="Projection_1">
+    <viewAttributes>
+      <viewAttribute id="DATE"/>
+      <viewAttribute id="YEAR"/>
+      <viewAttribute id="QUARTER"/>
+      <viewAttribute id="MONTH"/>
+      <viewAttribute id="REGION"/>
+      <viewAttribute id="STATE"/>
+      <viewAttribute id="CITY"/>
+      <viewAttribute id="CIRCLE_MANAGER"/>
+      <viewAttribute id="CLUSTER_MANAGER"/>
+      <viewAttribute id="CODE"/>
+      <viewAttribute id="ITEMTYPE"/>
+      <viewAttribute id="ITEMDESC"/>
+      <viewAttribute id="ITEMQTY"/>
+      <viewAttribute id="PRICE"/>
+    </viewAttributes>
+    <calculatedViewAttributes/>
+    <input node="sales_item"/>
+  </calculationView>
+</calculationViews>
+<logicalModel id="Projection_1">
+  <attributes>
+    <attribute id="DATE" order="1" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="DATE"/>
+      <keyMapping columnObjectName="Projection_1" columnName="DATE"/>
+    </attribute>
+    <attribute id="YEAR" order="2" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="YEAR"/>
+      <keyMapping columnObjectName="Projection_1" columnName="YEAR"/>
+    </attribute>
+    <attribute id="QUARTER" order="3" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="QUARTER"/>
+      <keyMapping columnObjectName="Projection_1" columnName="QUARTER"/>
+    </attribute>
+    <attribute id="MONTH" order="4" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="MONTH"/>
+      <keyMapping columnObjectName="Projection_1" columnName="MONTH"/>
+    </attribute>
+    <attribute id="REGION" order="5" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="REGION"/>
+      <keyMapping columnObjectName="Projection_1" columnName="REGION"/>
+    </attribute>
+    <attribute id="STATE" order="6" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="STATE"/>
+      <keyMapping columnObjectName="Projection_1" columnName="STATE"/>
+    </attribute>
+    <attribute id="CITY" order="7" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="CITY"/>
+      <keyMapping columnObjectName="Projection_1" columnName="CITY"/>
+    </attribute>
+    <attribute id="CIRCLE_MANAGER" order="8" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="CIRCLE_MANAGER"/>
+      <keyMapping columnObjectName="Projection_1" columnName="CIRCLE_MANAGER"/>
+    </attribute>
+    <attribute id="CLUSTER_MANAGER" order="9" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="CLUSTER_MANAGER"/>
+      <keyMapping columnObjectName="Projection_1" columnName="CLUSTER_MANAGER"/>
+    </attribute>
+    <attribute id="CODE" order="10" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="CODE"/>
+      <keyMapping columnObjectName="Projection_1" columnName="CODE"/>
+    </attribute>
+    <attribute id="ITEMTYPE" order="11" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="ITEMTYPE"/>
+      <keyMapping columnObjectName="Projection_1" columnName="ITEMTYPE"/>
+    </attribute>
+    <attribute id="ITEMDESC" order="12" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="ITEMDESC"/>
+      <keyMapping columnObjectName="Projection_1" columnName="ITEMDESC"/>
+    </attribute>
+  </attributes>
+  <calculatedAttributes/>
+  <baseMeasures>
+    <measure id="ITEMQTY" order="13" aggregationType="sum" measureType="simple">
+      <descriptions defaultDescription="ITEMQTY"/>
+      <measureMapping columnObjectName="Projection_1" columnName="ITEMQTY"/>
+      <exceptionAggregationMetadata/>
+    </measure>
+    <measure id="PRICE" order="14" aggregationType="sum" measureType="simple">
+      <descriptions defaultDescription="PRICE"/>
+      <measureMapping columnObjectName="Projection_1" columnName="PRICE"/>
+      <exceptionAggregationMetadata/>
+    </measure>
+  </baseMeasures>
+  <calculatedMeasures/>
+  <restrictedMeasures/>
+  <localDimensions/>
+</logicalModel>
+<layout>
+  <shapes>
+    <shape expanded="true" modelObjectName="Output" modelObjectNameSpace="MeasureGroup">
+      <upperLeftCorner x="40" y="85"/>
+    </shape>
+  
+    <shape expanded="true" modelObjectName="Projection_1" modelObjectNameSpace="CalculationView">
+      <upperLeftCorner x="74" y="172"/>
+      <rectangleSize height="30" width="160"/>
+    </shape>
+  </shapes>
+</layout>
+</Calculation:scenario>
