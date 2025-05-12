@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Calculation:scenario xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Calculation="http://www.sap.com/ndb/BiModelCalculation.ecore" id="test" applyPrivilegeType="NONE" dataCategory="CUBE" schemaVersion="3.0" hierarchyGeneration="SQL" outputViewType="Aggregation" application="BAS" cacheInvalidationPeriod="NONE" enforceSqlExecution="true">
+<descriptions defaultDescription="test"/>
+<localVariables/>
+<variableMappings/>
+<dataSources>
+  <DataSource id="SALES_BUDGET" type="TABLE_FUNCTION">
+    <resourceUri>SALES_BUDGET</resourceUri>
+  </DataSource>
+</dataSources>
+<snapshotProcedures/>
+<calculationViews>
+  <calculationView xsi:type="Calculation:ProjectionView" id="Projection_1">
+    <viewAttributes>
+      <viewAttribute id="DATE"/>
+      <viewAttribute id="YEAR"/>
+      <viewAttribute id="QUARTER"/>
+      <viewAttribute id="MONTH"/>
+      <viewAttribute id="WEEK"/>
+      <viewAttribute id="DAY"/>
+      <viewAttribute id="WEEK_DAY"/>
+      <viewAttribute id="REGION"/>
+      <viewAttribute id="STATE"/>
+      <viewAttribute id="CITY"/>
+      <viewAttribute id="CIRCLE_MANAGER"/>
+      <viewAttribute id="ARL_MANAGER"/>
+      <viewAttribute id="STORE_OPENING_DATE"/>
+      <viewAttribute id="PLANT"/>
+      <viewAttribute id="CODE"/>
+      <viewAttribute id="BRAND_NAME"/>
+      <viewAttribute id="OUTLET_TYPE"/>
+      <viewAttribute id="MANAGED_BY"/>
+      <viewAttribute id="OUTLET_NAME"/>
+      <viewAttribute id="SALE_TYPE"/>
+      <viewAttribute id="ACTUAL_BUDGET"/>
+      <viewAttribute id="NET_VALUE"/>
+      <viewAttribute id="TARGET_BUDGET"/>
+      <viewAttribute id="TRANSACTIONS"/>
+      <viewAttribute id="COVERS"/>
+    </viewAttributes>
+    <calculatedViewAttributes/>
+    <input node="SALES_BUDGET"/>
+  </calculationView>
+</calculationViews>
+<logicalModel id="Projection_1">
+  <attributes>
+    <attribute id="DATE" order="1" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="DATE"/>
+      <keyMapping columnObjectName="Projection_1" columnName="DATE"/>
+    </attribute>
+    <attribute id="YEAR" order="2" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="YEAR"/>
+      <keyMapping columnObjectName="Projection_1" columnName="YEAR"/>
+    </attribute>
+    <attribute id="QUARTER" order="3" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="QUARTER"/>
+      <keyMapping columnObjectName="Projection_1" columnName="QUARTER"/>
+    </attribute>
+    <attribute id="MONTH" order="4" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="MONTH"/>
+      <keyMapping columnObjectName="Projection_1" columnName="MONTH"/>
+    </attribute>
+    <attribute id="WEEK" order="5" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="WEEK"/>
+      <keyMapping columnObjectName="Projection_1" columnName="WEEK"/>
+    </attribute>
+    <attribute id="DAY" order="6" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="DAY"/>
+      <keyMapping columnObjectName="Projection_1" columnName="DAY"/>
+    </attribute>
+    <attribute id="WEEK_DAY" order="7" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="WEEK_DAY"/>
+      <keyMapping columnObjectName="Projection_1" columnName="WEEK_DAY"/>
+    </attribute>
+    <attribute id="REGION" order="8" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="REGION"/>
+      <keyMapping columnObjectName="Projection_1" columnName="REGION"/>
+    </attribute>
+    <attribute id="STATE" order="9" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="STATE"/>
+      <keyMapping columnObjectName="Projection_1" columnName="STATE"/>
+    </attribute>
+    <attribute id="CITY" order="10" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="CITY"/>
+      <keyMapping columnObjectName="Projection_1" columnName="CITY"/>
+    </attribute>
+    <attribute id="CIRCLE_MANAGER" order="11" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="CIRCLE_MANAGER"/>
+      <keyMapping columnObjectName="Projection_1" columnName="CIRCLE_MANAGER"/>
+    </attribute>
+    <attribute id="ARL_MANAGER" order="12" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="ARL_MANAGER"/>
+      <keyMapping columnObjectName="Projection_1" columnName="ARL_MANAGER"/>
+    </attribute>
+    <attribute id="STORE_OPENING_DATE" order="13" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="STORE_OPENING_DATE"/>
+      <keyMapping columnObjectName="Projection_1" columnName="STORE_OPENING_DATE"/>
+    </attribute>
+    <attribute id="PLANT" order="14" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="PLANT"/>
+      <keyMapping columnObjectName="Projection_1" columnName="PLANT"/>
+    </attribute>
+    <attribute id="CODE" order="15" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="CODE"/>
+      <keyMapping columnObjectName="Projection_1" columnName="CODE"/>
+    </attribute>
+    <attribute id="BRAND_NAME" order="16" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="BRAND_NAME"/>
+      <keyMapping columnObjectName="Projection_1" columnName="BRAND_NAME"/>
+    </attribute>
+    <attribute id="OUTLET_TYPE" order="17" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="OUTLET_TYPE"/>
+      <keyMapping columnObjectName="Projection_1" columnName="OUTLET_TYPE"/>
+    </attribute>
+    <attribute id="MANAGED_BY" order="18" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="MANAGED_BY"/>
+      <keyMapping columnObjectName="Projection_1" columnName="MANAGED_BY"/>
+    </attribute>
+    <attribute id="OUTLET_NAME" order="19" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="OUTLET_NAME"/>
+      <keyMapping columnObjectName="Projection_1" columnName="OUTLET_NAME"/>
+    </attribute>
+    <attribute id="SALE_TYPE" order="20" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="SALE_TYPE"/>
+      <keyMapping columnObjectName="Projection_1" columnName="SALE_TYPE"/>
+    </attribute>
+  </attributes>
+  <calculatedAttributes/>
+  <baseMeasures>
+    <measure id="ACTUAL_BUDGET" order="21" aggregationType="sum" measureType="simple">
+      <descriptions defaultDescription="ACTUAL_BUDGET"/>
+      <measureMapping columnObjectName="Projection_1" columnName="ACTUAL_BUDGET"/>
+      <exceptionAggregationMetadata/>
+    </measure>
+    <measure id="NET_VALUE" order="22" aggregationType="sum" measureType="simple">
+      <descriptions defaultDescription="NET_VALUE"/>
+      <measureMapping columnObjectName="Projection_1" columnName="NET_VALUE"/>
+      <exceptionAggregationMetadata/>
+    </measure>
+    <measure id="TARGET_BUDGET" order="23" aggregationType="sum" measureType="simple">
+      <descriptions defaultDescription="TARGET_BUDGET"/>
+      <measureMapping columnObjectName="Projection_1" columnName="TARGET_BUDGET"/>
+      <exceptionAggregationMetadata/>
+    </measure>
+    <measure id="TRANSACTIONS" order="24" aggregationType="sum" measureType="simple">
+      <descriptions defaultDescription="TRANSACTIONS"/>
+      <measureMapping columnObjectName="Projection_1" columnName="TRANSACTIONS"/>
+      <exceptionAggregationMetadata/>
+    </measure>
+    <measure id="COVERS" order="25" aggregationType="sum" measureType="simple">
+      <descriptions defaultDescription="COVERS"/>
+      <measureMapping columnObjectName="Projection_1" columnName="COVERS"/>
+      <exceptionAggregationMetadata/>
+    </measure>
+  </baseMeasures>
+  <calculatedMeasures/>
+  <restrictedMeasures/>
+  <localDimensions/>
+</logicalModel>
+<layout>
+  <shapes>
+    <shape expanded="true" modelObjectName="Output" modelObjectNameSpace="MeasureGroup">
+      <upperLeftCorner x="40" y="85"/>
+    </shape>
+  
+    <shape expanded="true" modelObjectName="Projection_1" modelObjectNameSpace="CalculationView">
+      <upperLeftCorner x="124" y="179"/>
+      <rectangleSize height="30" width="160"/>
+    </shape>
+  </shapes>
+</layout>
+</Calculation:scenario>
